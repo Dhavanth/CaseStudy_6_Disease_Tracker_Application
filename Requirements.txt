@@ -1,0 +1,133 @@
+  Disease Tracker
+
+Description:
+There are many Wars with disease fought all over the world. For example, in the past war with
+virus like Ebola, Zika, Spanish Flu etc were reported and they spread over multiple countries.
+The most recent case is Covid-19 which has affected around 190 countries and is spreading
+very fast among the world population.
+These diseases usually start from one region and spread through various human/animal
+interactions in other regions. However there can be some like famine, hunger, cancer etc which
+can start in unrelated places.
+Governments all over the world want to control the spread of diseases by taking appropriate
+measures for which they need to track the disease at regional level first.
+You are required to create a tracker tool which will help to track the diseases.
+
+Features:
+
+Should be able to track multiple Disease Wars.
+Should be able to capture Affected cases at country, state.
+One individual can be infected with multiple diseases at a time
+Should be able to capture cured cases for diseases as well as fatality cases.
+Should be able to show stats at multiple levels (state/country/global) in an anonymized
+manner.
+a. Total count = person Affected + person recovered + person passed due to same
+disease + person passed due to different war with disease
+Should be able to show stats at disease level in an anonymized manner.
+a. Total count = person Affected + person recovered + person passed due to same
+disease + person passed due to different war with disease
+
+Bonus Feature:
+For admins, details to be available in non-anonymized manner. No access control
+expected for admin and non admin, it can be on the basis of input.
+
+Requirements:
+Onboard different incidents (name, type, infectionType, transmission type etc)
+Report as positive case in the tracker with required info, demographics like
+(diseaseType, IndividualId, region)
+Report a cured/fatality case in the tracker: (diseaseType, IndividualDetails, region)
+Show stats at different levels as in feature 5.
+For edge cases like having an individual involved in multiple wars getting passed please
+count for all the diseases.
+Bonus question:
+Show non-anonymized reports to area managers for the same area and anonymized for
+others.
+Tracker should be able to show stats for a given country: country level summary, state
+wise breakup summary. Show state wise breakup summary for a given disease in a
+country
+Other Details:
+Do not use any database or NoSQL store, use the in-memory store for now.
+Do not create any UI for the application.
+Write a driver class for the demo purposes. Which will execute all the commands at one
+place in the code and test cases.
+Please prioritize code compilation, execution, and completion.
+Work on the expected output first and then add good-to-have features of your own.
+You can choose whatever input format you want as long as all the input parameters are
+Test Cases:
+(Test cases are defined for understanding feature requirements only. Please model it appropriately based on your service
+implementation)
+
+Test Case 1:
+
+registerDisease(“COVID-19”, VIRAL, TRANSMISSIBLE, AIR)
+registerDisease(“HUNGER”, ECONOMY, NON-TRANSMISSIBLE, NONE)
+registerDisease(“TYPHOID”, Bacterial, TRANSMISSIBLE, WATER)
+report(“COVID-19”, P1, “China”, “Hubei”, “Wuhan” )
+report(“COVID-19”, P2, “China”, “Hubei”, “Wuhan”)
+report(“COVID-19”, P3, “China”, “Jiangsu”, “Shanghai”)
+report(“COVID-19”, P4, “India”, “Uttar Pradesh”, “Agra”)
+report(“COVID-19”, P5, “India”, “Uttar Pradesh”, “Varanasi”)
+report(“COVID-19”, P6, “India”, “Karnataka”, “Bangalore”)
+report(“COVID-19”, P7, “India”, “Karnataka”, “Bangalore”)
+report(“COVID-19”, P8, “India”, “Karnataka”, “Bangalore”)
+report(“Spanish Flu”, P9, “USA”, “California”, “Los Angeles”)
+report(“Spanish Flu”, P10, “USA”, “California”, “San-francisco”)
+ShowWorldSummary() =>
+a. Overall:
+i. Total : 10
+ii. Cured : 0
+iii. Fatality : 0
+iv. Active : 10
+ShowWorldSummaryDiseasesBreakup() =>
+a. COVID-19:
+i. Total : 8
+ii. Cured : 0
+iii. Fatality : 0
+iv. Active : 8
+b. Spanish Flu:
+i. Total : 2
+ii. Cured : 0
+iii. Fatality : 0
+iv. Active : 2
+ShowCountryBreakup(“COVID-19”) =>
+a. China:
+i. Total : 3
+ii. Cured : 0
+iii. Fatality : 0
+iv. Active : 3
+b. India:
+i. Total : 5
+ii. Cured : 0
+iii. Fatality : 0
+iv. Active : 5
+cured(“COVID-19”, P8)
+ShowCountryBreakup(“COVID-19”) =>
+a. China:
+i. Total : 3
+ii. Cured : 0
+iii. Fatality : 0
+iv. Active : 3
+b. India:
+i. Total : 5
+ii. Cured : 1
+iii. Fatality : 0
+iv. Active : 4
+registerFatility(“COVID-19”, P2)
+Bonus:
+ShowStateBreakup(“COVID-19”, “India”)
+a. Uttar Pradesh:
+i. Total : 2
+ii. Cured : 0
+iii. Fatality : 0
+iv. Active : 2
+b. Karnataka:
+i. Total : 3
+ii. Cured : 0
+iii. Fatality : 0
+iv. Active : 3
+ShowDetailsToAdmin()
+i. COVID-19:
+Total : 8 {p1, p2, ...}
+Cured : 1 {P8}
+Fatality : 1 {P2}
+Active : 6 {.... }
+
